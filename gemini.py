@@ -2,8 +2,6 @@ import os
 
 import google.generativeai as genai
 from dotenv import load_dotenv
-from google.generativeai.types import StopCandidateException
-
 
 load_dotenv()
 
@@ -13,21 +11,19 @@ genai.configure(api_key=gemini_api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 
-def get_response(prompt, number):
-    try:
-        history = firebase.get_member_history(number)
-        if len(history) == 0:
-            prompt = textwrap.dedent(f''' You are a friendly sustainability assistant. Help users learn about 
-            eco-friendly practices, reduce waste, and conserve resources. Use simple language and ask follow-up 
-            questions to provide more tailored information. Keep responses concise and informative. 
-            Here is their first question:\n"{prompt}".''')
-            history = [{"role": "user", "parts": [{"text": prompt}]}]
-
-        chat = model.start_chat(history=history)
-        response = chat.send_message(prompt)
-        history = jsonpickle.encode(chat.history, True)
-        firebase.set_member_history(number=number, history=history)
-
-        return wrapper.fill(response.text.replace('*', ''))
-    except StopCandidateException:
-        return 'Error, please ask another question'
+def get_customer_info(dialog):
+    response = model.generate_content(f"""
+    Extract the following information of the customer in JSON format from the provided chat data:
+    
+    * **name:** The full name of the person.
+    * **age:** The person's age.
+    * **gender:** The person's gender.
+    * **income:** The person's estimated income level (e.g., low, medium, high).
+    * **education:** The person's highest level of education (e.g., high school, bachelor's, master's).
+    * **profession:** The person's occupation.
+    
+    Return only the JSON string and no other additional details.
+    
+    **Chat Data:**
+    {dialog}""")
+    return response.text
