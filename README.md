@@ -1,3 +1,3 @@
-vCon Customer Segmetation
+# vCon Customer Segmentation
 
-This project provides customer segmetation using vCon data 
+This project provides customer segmentation using vCon data 

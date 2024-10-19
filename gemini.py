@@ -1,12 +1,9 @@
 import os
-import textwrap
 
 import google.generativeai as genai
-import jsonpickle
 from dotenv import load_dotenv
 from google.generativeai.types import StopCandidateException
 
-import firebase
 
 load_dotenv()
 
@@ -14,7 +11,6 @@ load_dotenv()
 gemini_api_key = os.getenv('GEMINI_API_KEY')
 genai.configure(api_key=gemini_api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
-wrapper = textwrap.TextWrapper(width=50)
 
 
 def get_response(prompt, number):
