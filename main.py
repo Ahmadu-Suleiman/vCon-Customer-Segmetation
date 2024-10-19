@@ -18,6 +18,6 @@ dialog_text = ''
 print('\n\nDialog:')
 for line in dialog:
     dialog_text += f"\n{line['speaker']}: {line['message']}"
-    # print(f"{line['speaker']}: {line['message']}")
 
+print(dialog_text)
 print(get_customer_info(dialog_text))
