@@ -1,7 +1,7 @@
 # ConSeg: Customer Segmentation using vCon Data
 
 ## Project Overview
-This project aims to build an AI-powered tool that classifies customers based on behaviors and preferences detected in virtual conversations (vCon data). The segmentation will allow businesses to create targeted marketing strategies and enhance customer satisfaction.
+This project is an AI-powered tool that classifies customers based on behaviors and preferences detected in virtual conversations (vCon data). The segmentation will allow businesses to create targeted marketing strategies and enhance customer satisfaction.
 
 ## Features
 - **Customer Segmentation**: Classifies customers using vCon data into categories like Age, Gender, Income, Level of Education, Religion, and Profession/Role in the company.
