@@ -14,7 +14,7 @@ import json
 
 
 def get_customer_info(dialog):
-    response = model.generate_content(f"""
+    response = model.generate_content("""
     Extract the following information from the provided chat data in a return it in a plain text, 
     valid, parsable JSON format:
 
@@ -49,23 +49,54 @@ def get_customer_info(dialog):
     * **spending_habits:** The person's spending patterns (e.g., frugal, impulsive, brand-conscious).
     * **purchasing_habits:** The person's buying behavior (e.g., frequency, quantity, channel).
     * **browsing_habits:** The person's online behavior (e.g., websites visited, time spent).
-    * **interactions_with_brand:** The person's interactions with your brand (e.g., customer service inquiries, social media engagement).
+    * **interactions_with_brand:** The person's interactions with your brand (e.g., customer service inquiries).
     * **loyalty_to_brand:** The person's level of loyalty to your brand (e.g., repeat customer, brand advocate).
     * **product_feedback:** The person's feedback on your products or services.
 
 
-    Return only a valid, parsable JSON string and no other additional details.
+    Return only a valid, parsable JSON string and no other additional details in this structure:
+    
+    {
+      "Behavioral Segmentation": {
+        "browsing_habits": "",
+        "interactions_with_brand": "",
+        "loyalty_to_brand": "",
+        "product_feedback": "",
+        "purchasing_habits": "",
+        "spending_habits": ""
+      },
+      "Demographic Segmentation": {
+        "age": "",
+        "education": "",
+        "gender": "",
+        "income": "",
+        "profession": "",
+        "religion": ""
+      },
+      "Geographic Segmentation": {
+        "climate": "",
+        "culture": "",
+        "language": "",
+        "population_density": ""
+      },
+      "Psychographic Segmentation": {
+        "hobbies": "",
+        "life_goals": "",
+        "lifestyle": "",
+        "opinions": "",
+        "personality": "",
+        "social_status": "",
+        "values_and_beliefs": ""
+      }
+    }
+
+                                
     **Chat Data:**
-    {dialog}""", generation_config={"response_mime_type": "application/json"})
+    \n""" + dialog, generation_config={"response_mime_type": "application/json"})
 
     try:
-        print(response.text)
         response_json = json.loads(response.text)
         return response_json
     except json.JSONDecodeError:
         print("Error parsing JSON response.")
         return None
-
-
-def extract_json(text_response):
-    pattern = r'\{[^{}]*\}'

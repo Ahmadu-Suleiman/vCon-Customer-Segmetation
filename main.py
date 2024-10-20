@@ -1,6 +1,8 @@
 import read_json_from_file
 from gemini import get_customer_info
 
+import pprint
+
 vcon = read_json_from_file.read('test vcon.json')
 
 # Extract relevant customer and conversation information
@@ -19,5 +21,4 @@ print('\n\nDialog:')
 for line in dialog:
     dialog_text += f"\n{line['speaker']}: {line['message']}"
 
-print(dialog_text)
 print(get_customer_info(dialog_text))
