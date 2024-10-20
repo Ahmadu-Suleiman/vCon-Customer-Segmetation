@@ -12,6 +12,8 @@ behaviors and preferences detected in virtual conversations (vCon data). The
 segmentation will allow businesses to create targeted marketing strategies 
 and enhance customer satisfaction.""")
 
+st.link_button("Generate a test vCon file", "https://vcon-faker.streamlit.app/")
+
 # Step 1: Upload JSON file
 uploaded_file = st.file_uploader("Upload a vCon file", type="json")
 
