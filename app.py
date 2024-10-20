@@ -7,7 +7,7 @@ import segmentation
 # Streamlit app layout
 st.title("ConSeg: Customer Segmentation using vCon Data")
 st.text("""
-This project aims to build an AI-powered tool that classifies customers based on 
+This project integrates an AI-powered tool that classifies customers based on 
 behaviors and preferences detected in virtual conversations (vCon data). The 
 segmentation will allow businesses to create targeted marketing strategies 
 and enhance customer satisfaction.""")

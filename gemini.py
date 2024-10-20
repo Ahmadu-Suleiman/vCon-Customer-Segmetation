@@ -27,6 +27,15 @@ def get_customer_info(dialog):
     * **religion:** The person's religion.
     * **profession:** The person's occupation.
 
+    **Behavioral Segmentation:**
+
+    * **spending_habits:** The person's spending patterns (e.g., frugal, impulsive, brand-conscious).
+    * **purchasing_habits:** The person's buying behavior (e.g., frequency, quantity, channel).
+    * **browsing_habits:** The person's online behavior (e.g., websites visited, time spent).
+    * **interactions_with_brand:** The person's interactions with your brand (e.g., customer service inquiries).
+    * **loyalty_to_brand:** The person's level of loyalty to your brand (e.g., repeat customer, brand advocate).
+    * **product_feedback:** The person's overall feedback on your products or services (positive, neutral or negative).
+    
     **Psychographic Segmentation:**
 
     * **personality:** The person's personality traits (e.g., extroverted, introverted, conscientious).
@@ -44,27 +53,10 @@ def get_customer_info(dialog):
     * **language:** The region's primary language(s).
     * **population_density:** The region's population density (e.g., urban, suburban, rural).
 
-    **Behavioral Segmentation:**
-
-    * **spending_habits:** The person's spending patterns (e.g., frugal, impulsive, brand-conscious).
-    * **purchasing_habits:** The person's buying behavior (e.g., frequency, quantity, channel).
-    * **browsing_habits:** The person's online behavior (e.g., websites visited, time spent).
-    * **interactions_with_brand:** The person's interactions with your brand (e.g., customer service inquiries).
-    * **loyalty_to_brand:** The person's level of loyalty to your brand (e.g., repeat customer, brand advocate).
-    * **product_feedback:** The person's feedback on your products or services.
-
 
     Return only a valid, parsable JSON string and no other additional details in this structure:
     
     {
-      "Behavioral Segmentation": {
-        "browsing_habits": "",
-        "interactions_with_brand": "",
-        "loyalty_to_brand": "",
-        "product_feedback": "",
-        "purchasing_habits": "",
-        "spending_habits": ""
-      },
       "Demographic Segmentation": {
         "age": "",
         "education": "",
@@ -72,6 +64,14 @@ def get_customer_info(dialog):
         "income": "",
         "profession": "",
         "religion": ""
+      }, 
+      "Behavioral Segmentation": {
+        "browsing_habits": "",
+        "interactions_with_brand": "",
+        "loyalty_to_brand": "",
+        "product_feedback": "",
+        "purchasing_habits": "",
+        "spending_habits": ""
       },
       "Geographic Segmentation": {
         "climate": "",
@@ -89,8 +89,7 @@ def get_customer_info(dialog):
         "values_and_beliefs": ""
       }
     }
-
-                                
+                          
     **Chat Data:**
     \n""" + dialog, generation_config={"response_mime_type": "application/json"})
 
