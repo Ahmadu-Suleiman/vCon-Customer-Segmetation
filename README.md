@@ -16,3 +16,6 @@ We use **vCon JSON data** containing structured metadata and conversation transc
 - **Python**: Core programming language for data parsing and analysis.
 - **Google Gemini API**: For natural language understanding (NLU), entity recognition, and sentiment analysis.
 - **JSON**: For handling and parsing vCon data.
+
+## Testing
+Try out the application [here](https://conseg.streamlit.app/).
