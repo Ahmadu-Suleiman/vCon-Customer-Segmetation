@@ -1,10 +1,8 @@
-import read_json_from_file
 from gemini import get_customer_info
 
 
-def segmentation(json_v_con):
+def segment(vcon):
     try:
-        vcon = read_json_from_file.read(json_v_con)
 
         # Extract conversation data
         dialog = vcon['analysis'][0]['body']
@@ -15,8 +13,9 @@ def segmentation(json_v_con):
 
         return get_customer_info(dialog_text)
 
+
     except FileNotFoundError:
-        print("Error: The file 'test vcon.json' was not found.")
+        print("Error: The file was not found.")
         return None
     except KeyError as e:
         print(f"Error: Missing key in the JSON structure: {e}")
